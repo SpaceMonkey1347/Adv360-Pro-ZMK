@@ -19,6 +19,15 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
+
+        mo_tog: mo_tog {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MO_TOG";
+            #binding-cells = <2>;
+            bindings = <&mo>, <&tog>;
+
+            tapping-term-ms = <200>;
+        };
     };
 
     keymap {
@@ -27,11 +36,11 @@
         default_layer {
             display-name = "Base";
             bindings = <
-&kp EQUAL  &kp N1     &kp N2    &kp N3    &kp N4     &kp N5  &tog 1                                                      &mo 6    &kp N6  &kp N7  &kp N8     &kp N9    &kp N0    &kp MINUS
-&kp TAB    &kp Q      &kp W     &kp E     &kp R      &kp T   &to 0                                                       &tog 9   &kp Y   &kp U   &kp I      &kp O     &kp P     &kp BSLH
-&kp ESC    &kp A      &kp S     &kp D     &kp F      &kp G   &tog 7     &kp LCTRL  &kp LGUI         &kp LALT  &kp RCTRL  &tog 10  &kp H   &kp J   &kp K      &kp L     &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z      &kp X     &kp C     &kp V      &kp B                         &kp PG_UP        &kp HOME                      &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
-&mo 3      &kp GRAVE  &kp CAPS  &kp LEFT  &kp RIGHT          &kp SPACE  &kp ENTER  &lt 9 PG_DN      &kp END   &kp BSPC   &kp DEL          &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &mo 3
+&kp EQUAL  &kp N1     &kp N2    &kp N3    &kp N4     &kp N5  &tog 1                                                            &mo 6    &kp N6  &kp N7  &kp N8     &kp N9    &kp N0    &kp MINUS
+&kp TAB    &kp Q      &kp W     &kp E     &kp R      &kp T   &to 0                                                             &tog 9   &kp Y   &kp U   &kp I      &kp O     &kp P     &kp BSLH
+&kp ESC    &kp A      &kp S     &kp D     &kp F      &kp G   &mo_tog 8 7  &kp LCTRL  &kp LGUI          &kp LALT     &kp RCTRL  &tog 10  &kp H   &kp J   &kp K      &kp L     &kp SEMI  &kp SQT
+&kp LSHFT  &kp Z      &kp X     &kp C     &kp V      &kp B                           &lt 11 PG_UP      &lt 11 HOME                      &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
+&mo 3      &kp GRAVE  &kp CAPS  &kp LEFT  &kp RIGHT          &kp SPACE    &kp ENTER  &lt 9 PG_DN       &lt 10 END   &kp BSPC   &kp DEL          &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &mo 3
             >;
         };
 
@@ -107,16 +116,16 @@
 &kp EQUAL   &kp N1     &kp N2    &kp N3    &kp N4     &kp N5  &to 0                                                    &mo 6    &kp N6  &kp N7  &kp N8     &kp N9    &kp N0    &kp MINUS
 &kp TAB     &kp M      &kp Q     &kp W     &kp E      &kp R   &kp T                                                    &tog 9   &kp Y   &kp U   &kp I      &kp O     &kp P     &kp BSLH
 &kp LCTRL   &kp H      &kp A     &kp S     &kp D      &kp F   &kp G      &kp ESC    &kp LALT      &kp LGUI  &kp RCTRL  &tog 10  &kp H   &kp J   &kp K      &kp L     &kp SEMI  &kp SQT
-&kp LSHIFT  &kp Z      &kp X     &kp C     &kp V      &kp B                         &tog 9        &kp HOME                      &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
-&mo 3       &kp GRAVE  &kp CAPS  &kp LEFT  &kp RIGHT          &kp SPACE  &kp ENTER  &mo 9         &kp END   &kp BSPC   &kp DEL          &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &mo 3
+&kp LSHIFT  &kp Z      &kp X     &kp C     &kp V      &kp B                         &tog 8        &kp HOME                      &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
+&mo 3       &kp GRAVE  &kp CAPS  &kp LEFT  &kp RIGHT          &kp SPACE  &kp ENTER  &mo 8         &kp END   &kp BSPC   &kp DEL          &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &mo 3
             >;
         };
 
         mirror {
             bindings = <
 &kp MINUS  &kp N0    &kp N9    &kp N8     &kp N7  &kp N6  &trans                                                       &mo 6      &kp N5  &kp N4     &kp N3    &kp N2    &kp N1     &kp EQUAL
-&kp BSLH   &kp P     &kp O     &kp I      &kp U   &kp Y   &to 0                                                        &trans     &kp T   &kp R      &kp E     &kp W     &kp Q      &kp TAB
-&kp SQT    &kp SEMI  &kp L     &kp K      &kp J   &kp H   &to 7     &kp RCTRL  &kp LALT      &kp LGUI       &kp LCTRL  &trans     &kp G   &kp F      &kp D     &kp S     &kp A      &kp ESC
+&kp BSLH   &kp P     &kp O     &kp I      &kp U   &kp Y   &to 0                                                        &to 0      &kp T   &kp R      &kp E     &kp W     &kp Q      &kp TAB
+&kp SQT    &kp SEMI  &kp L     &kp K      &kp J   &kp H   &to 7     &kp RCTRL  &kp LALT      &kp LGUI       &kp LCTRL  &to 7      &kp G   &kp F      &kp D     &kp S     &kp A      &kp ESC
 &kp RSHFT  &kp FSLH  &kp DOT   &kp COMMA  &kp M   &kp N                        &kp HOME      &kp PG_UP                            &kp B   &kp V      &kp C     &kp X     &kp Z      &kp LSHFT
 &trans     &kp LBKT  &kp RBKT  &kp DOWN   &kp UP          &kp BSPC  &kp DEL    &kp END       &kp PAGE_DOWN  &kp ENTER  &kp SPACE          &kp RIGHT  &kp LEFT  &kp CAPS  &kp GRAVE  &trans
             >;
@@ -124,21 +133,31 @@
 
         left_mirror {
             bindings = <
-&kp MINUS  &kp N0    &kp N9    &kp N8     &kp N7  &kp N6  &trans                                              &mo 6    &trans  &trans  &trans  &trans  &trans  &trans
-&kp BSLH   &kp P     &kp O     &kp I      &kp U   &kp Y   &to 0                                               &trans   &trans  &trans  &trans  &trans  &trans  &trans
-&kp SQT    &kp SEMI  &kp L     &kp K      &kp J   &kp H   &to 7      &kp RCTRL  &kp LALT      &trans  &trans  &tog 10  &trans  &trans  &trans  &trans  &trans  &trans
-&kp RSHFT  &kp FSLH  &kp DOT   &kp COMMA  &kp M   &kp N                         &kp HOME      &trans                   &trans  &trans  &trans  &trans  &trans  &trans
-&trans     &kp LBKT  &kp RBKT  &kp DOWN   &kp UP          &kp SPACE  &kp ENTER  &kp END       &trans  &trans  &trans           &trans  &trans  &trans  &trans  &trans
+&kp MINUS  &kp N0    &kp N9    &kp N8     &kp N7  &kp N6  &trans                                             &mo 6   &trans  &trans  &trans  &trans  &trans  &trans
+&kp BSLH   &kp P     &kp O     &kp I      &kp U   &kp Y   &to 0                                              &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&kp SQT    &kp SEMI  &kp L     &kp K      &kp J   &kp H   &to 7     &kp RCTRL  &kp LALT      &trans  &trans  &tog 8  &trans  &trans  &trans  &trans  &trans  &trans
+&kp RSHFT  &kp FSLH  &kp DOT   &kp COMMA  &kp M   &kp N                        &kp HOME      &trans                  &trans  &trans  &trans  &trans  &trans  &trans
+&trans     &kp LBKT  &kp RBKT  &kp DOWN   &kp UP          &kp BSPC  &kp DEL    &kp END       &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
             >;
         };
 
         right_mirror {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &trans                                            &mo 6      &kp N5  &kp N4     &kp N3    &kp N2    &kp N1     &kp EQUAL
-&trans  &trans  &trans  &trans  &trans  &trans  &to 0                                             &tog 9     &kp T   &kp R      &kp E     &kp W     &kp Q      &kp TAB
+&trans  &trans  &trans  &trans  &trans  &trans  &to 0                                             &tog 8     &kp T   &kp R      &kp E     &kp W     &kp Q      &kp TAB
 &trans  &trans  &trans  &trans  &trans  &trans  &to 7   &trans  &trans      &kp LGUI   &kp LCTRL  &trans     &kp G   &kp F      &kp D     &kp S     &kp A      &kp ESC
 &trans  &trans  &trans  &trans  &trans  &trans                  &trans      &kp PG_UP                        &kp B   &kp V      &kp C     &kp X     &kp Z      &kp LSHFT
-&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans      &kp PG_DN  &kp SPACE  &kp ENTER          &kp RIGHT  &kp LEFT  &kp CAPS  &kp GRAVE  &trans
+&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans      &kp PG_DN  &kp ENTER  &kp SPACE          &kp RIGHT  &kp LEFT  &kp CAPS  &kp GRAVE  &trans
+            >;
+        };
+
+        transition {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &tog 1                                      &tog 2   &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &tog 4                                      &tog 5   &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &tog 9  &trans  &trans      &trans  &trans  &tog 10  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                  &trans      &trans                   &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans      &trans  &trans  &trans           &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
